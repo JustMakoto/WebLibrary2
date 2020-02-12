@@ -35,10 +35,8 @@ import util.RoleManager;
 @WebServlet(name = "AdminController", urlPatterns = {
     "/newBook",
     "/addBook",
-    
     "/editBook",
     "/changeBook",
-    "/listReaders",
     "/takeOnBooks",
     "/listAllBooks",
     "/showAdmin",
@@ -46,6 +44,7 @@ import util.RoleManager;
     
     
 })
+
 public class AdminController extends HttpServlet {
     @EJB private BookFacade bookFacade;
     @EJB private ReaderFacade readerFacade;
@@ -146,11 +145,7 @@ public class AdminController extends HttpServlet {
                 request.setAttribute("listBooks", listBooks);
                 request.getRequestDispatcher("/listBooks.jsp").forward(request, response);
                 break;
-            case "/listReaders":
-                List<Reader> listReaders = readerFacade.findAll();
-                request.setAttribute("listReaders", listReaders);
-                request.getRequestDispatcher("/listReaders.jsp").forward(request, response);
-                break;
+
             
             case "/takeOnBooks":
                 List<History> listHistories = historyFacade.findNotReturnedBook();

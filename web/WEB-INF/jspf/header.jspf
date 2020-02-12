@@ -11,24 +11,40 @@
       <div class="container">
           <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary col-12">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="index">Navbar</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
 
               <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item " id="menu1">
-                    <a class="nav-link" href="#">Новые книги</a>
+                   
+                 <li class="nav-item" id="menu1">
+                    <a class="nav-link" href="listBooks">Список книг</a>
                   </li>
-                  <li class="nav-item active " id="menu2">
-                    <a class="nav-link" href="#">Features</a>
+                  
+                  
+                  <li class="nav-item " id="menu2">
+                    <a class="nav-link" href="listReaders">Список читателей</a>
                   </li>
                   <li class="nav-item"  id="menu3">
-                    <a class="nav-link" href="#">Pricing</a>
+                      <c:if test="${userRole eq null}">
+            <a class="nav-link" href="showLogin">Войти</a>
+                </c:if>
+                <c:if test="${userRole ne null}">
+                    <a class="nav-link" href="logout">Выйти</a>
+                </c:if>
+                    
+
                   </li>
                   <li class="nav-item"  id="menu4">
-                    <a class="nav-link" href="#">About</a>
+                      <c:if test="${userRole eq null}">
+            <a class="nav-link" href="newReader">Регистрация</a>
+                </c:if>
+                            <c:if test="${userRole ne null}">
+                    <a class="nav-link" href="logout"></a>
+                </c:if>
+            
                   </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -38,3 +54,5 @@
               </div>
             </nav>
           </div>
+          
+          

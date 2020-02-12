@@ -6,13 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Книга ${book.name}</title>
-    </head>
-    <body>
+
         <h1>Книга</h1>
         <a href="index">Главная страница</a><br>
         Название книги: ${book.name}<br>
@@ -25,5 +19,4 @@
         <c:if test="${userRole eq 'USER' || userRole eq 'MANAGER' || userRole eq 'ADMIN'}">     
             <a href="doTakeBook?bookId=${book.id}">Почитать (за деньги)</a>
         </c:if>
-    </body>
-</html>
+

@@ -6,23 +6,28 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Список книг библиотеки</title>
-    </head>
-    <body>
+
         <h1>Список книг библиотеки</h1>
         <p>${info}</p>
         
         <a href="index">Главная страница</a>
         <ul>
             <c:forEach var="book" items="${listBooks}">
-                <li>
-                    Название: ${book.name} <a href="showBook?id=${book.id}">Показать</a>
-                </li>
+                <div class="container" style="max-width:30rem">
+                <div class="card border-primary mb-5" style="">
+                  <div class="card-header">${book.name}</div>
+                  <div class="card-body">
+                    <h4 class="card-title">${book.author} ${book.publishedYear} г.</h4>
+                    <p class="card-text">Количество книг в наличии: ${book.countInLibrary}</p>
+                    <c:if test="${userRole eq 'MANAGER' || userRole eq 'ADMIN'}">
+            <a href="editBook?id=${book.id}">Изменить</a><br>
+        </c:if>
+            <c:if test="${userRole == 'USER' || userRole eq 'MANAGER' || userRole eq 'ADMIN'}">
+            <a href="doTakeBook?bookId=${book.id}">Почитать (за деньги)</a>
+</c:if>
+                  </div>
+                </div> 
+                </div>   
             </c:forEach>
         </ul>
-    </body>
-</html>
+
